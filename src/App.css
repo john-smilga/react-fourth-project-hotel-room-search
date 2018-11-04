@@ -1,32 +1,275 @@
-.App {
+@import url("https://fonts.googleapis.com/css?family=Poor+Story");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --mainWhite: #fff;
+  --mainBlack: #222;
+  --mainYellow: #fdd631;
+  --mainGrey: #ededed;
+  --darkGray: grey;
+  --transBlack: rgba(0, 0, 0, 0.8);
+}
+body {
+  background: var(--mainWhite);
+  color: var(--mainBlack);
+  font-family: "Poor Story", cursive;
+}
+.section-title {
   text-align: center;
+  font-size: 2rem;
+  margin-top: 2rem;
+  text-transform: capitalize;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+.section-title__underline {
+  height: 0.3rem;
+  width: 8rem;
+  background: var(--mainYellow);
+  margin: 0 auto;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.room-filter {
+  padding: 1rem;
+  width: 80vw;
+  margin: 0 auto;
+  border: 0.1rem solid var(--darkGray);
+  margin-top: 2rem;
+  font-size: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 0.5rem;
+  text-transform: capitalize;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  color: var(--darkGray);
+  border-radius: 0.5rem;
+  -webkit-box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s linear;
+}
+.room-filter:hover {
+  -webkit-box-shadow: 4px 4px 2px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 4px 4px 2px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 4px 4px 2px 0px rgba(0, 0, 0, 0.5);
+}
+.room-filter__choice {
+  display: block;
+  width: 100%;
+  background: transparent;
+  text-transform: uppercase;
+  color: var(--darkGray);
 }
 
-.App-link {
-  color: #61dafb;
+.room-size {
+  display: inline-block;
+  width: 45%;
+  margin-right: 0.2rem;
+  border-radius: 0.2rem;
+  padding: 0.2rem;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.room-filter__extra {
+  width: 10rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media screen and (min-width: 992px) {
+  .room-filter {
+    width: 95vw;
+    grid-template-columns: repeat(5, 1fr);
+    grid-column-gap: 0.7rem;
   }
-  to {
-    transform: rotate(360deg);
+  .room-filter__price {
+    justify-self: center;
+  }
+}
+
+.roomListings {
+  width: 80vw;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+.search-fail {
+  color: red;
+  text-transform: capitalize;
+  letter-spacing: 0.2rem;
+}
+.room__img {
+  width: 100%;
+  height: 12rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  transition: all 0.3s linear;
+  display: block;
+}
+.room {
+  margin: 1rem 0;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  transition: all 0.3s linear;
+  -webkit-box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.5);
+}
+.room:hover {
+  -webkit-box-shadow: 4px 4px 2px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 4px 4px 2px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 4px 4px 2px 0px rgba(0, 0, 0, 0.5);
+}
+.room__img-container {
+  position: relative;
+  transition: all 0.3s linear;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+.room__price {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.5rem 0.8rem 0.7rem 0.8rem;
+  background: var(--transBlack);
+  color: var(--mainWhite);
+  border-bottom-right-radius: 50%;
+  opacity: 1;
+  border-top-left-radius: 0.5rem;
+  transition: all 0.3 linear;
+}
+.room__img-container:hover {
+  background: var(--transBlack);
+}
+.room__img-container:hover .room__price {
+  opacity: 0;
+}
+.room__img-container:hover .room__img {
+  opacity: 0.3;
+}
+.room__info {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  opacity: 0;
+  transition: all 0.3s linear;
+  color: var(--mainWhite);
+}
+.room__info h1 {
+  font-size: 2rem;
+}
+.room__info-btn {
+  background: var(--mainYellow);
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  border: 0.1rem solid var(--mainYellow);
+  border-radius: 0.5rem;
+  letter-spacing: 0.2rem;
+  transition: all 0.3s linear;
+  color: var(--mainBlack);
+}
+.room__info-btn:hover {
+  background: transparent;
+  color: var(--mainYellow);
+  cursor: pointer;
+}
+.room__img-container:hover .room__info {
+  opacity: 1;
+}
+.room__name {
+  background: var(--mainGrey);
+  text-align: center;
+  text-transform: capitalize;
+  padding: 0.3rem 0;
+  font-size: 1.5rem;
+}
+
+@media screen and (min-width: 576px) {
+  .roomListings {
+    width: 90vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 1rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .roomListings {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (min-width: 992px) {
+  .roomListings {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background: var(--transBlack);
+  color: var(--mainWhite);
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+.modal-body {
+  width: 90vw;
+  display: grid;
+  border: 0.2rem solid var(--mainYellow);
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+.modal-title {
+  text-transform: capitalize;
+}
+.modal-body__img-container {
+  position: relative;
+}
+.modal-body img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+.modal-body__info {
+  background: var(--mainWhite);
+  color: var(--mainBlack);
+  padding: 1.5rem;
+}
+.modal-icons {
+  margin: 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.modal-item {
+  margin: 0.5rem 0;
+  margin-right: 0.5rem;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+}
+.modal-icon {
+  background: var(--mainGrey);
+  padding: 0.5rem;
+  border-radius: 20%;
+  margin-right: 0.5rem;
+}
+.modal-room-info {
+  letter-spacing: 0.1rem;
+  margin-bottom: 1rem;
+}
+@media screen and (min-width: 576px) {
+  .modal-body {
+    width: 68vw;
+  }
+}
+@media screen and (min-width: 768px) {
+  .modal-body {
+    width: 90vw;
+    grid-template-columns: 1fr 1fr;
   }
 }

@@ -11,17 +11,19 @@ export default class RoomListings extends Component {
             sorry. but your search did not return any results
           </h2>
         ) : null}
-        {roomData.map(room => {
-          return (
-            <Room
-              key={room.id}
-              img={room.img}
-              price={room.price}
-              name={room.name}
-              openModal={() => openModal(room.id)}
-            />
-          );
-        })}
+        <div className="roomListings">
+          {roomData.map(room => {
+            return (
+              <Room
+                key={room.id}
+                img={room.img}
+                price={room.price}
+                name={room.name}
+                openModal={() => openModal(room.id)}
+              />
+            );
+          })}
+        </div>
       </section>
     );
   }

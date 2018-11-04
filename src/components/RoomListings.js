@@ -5,7 +5,7 @@ export default class RoomListings extends Component {
     const { roomData, openModal } = this.props;
 
     return (
-      <section className="roomListings">
+      <section>
         {roomData.length === 0 ? (
           <h2 className="search-fail">
             sorry. but your search did not return any results

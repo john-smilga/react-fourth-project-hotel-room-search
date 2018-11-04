@@ -91,6 +91,7 @@ body {
   text-transform: capitalize;
   letter-spacing: 0.2rem;
   text-align: center;
+  margin: 0.2rem;
 }
 .roomListings {
   width: 80vw;

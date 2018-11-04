@@ -42,7 +42,7 @@ export default class Modal extends Component {
     const { name, price, pets, breakfast, img } = this.state.room;
 
     return (
-      <div className="modal">
+      <div className="modal" onClick={closeModal}>
         <div className="modal-body">
           <div className="modal-body__img-container">
             <img src={img} alt="" />
